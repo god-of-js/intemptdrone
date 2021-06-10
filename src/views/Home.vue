@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" :style="`justify-content: ${justify};`">
     <div :class="['drone', direction]" id="drone">
       <div class="rotor-shaft">
         <span></span>
@@ -25,6 +25,7 @@ export default {
     return {
       direction: "",
       drone: null,
+      justify: "center",
     };
   },
   mounted() {
@@ -50,6 +51,11 @@ export default {
     this.drone = document.getElementById("drone");
   },
   methods: {
+    timer(param) {
+      setTimeout(() => {
+        this.justify = this.justify !== "center" ? "center" : param;
+      }, 1000);
+    },
     moveUp() {
       this.direction = "up move";
     },
@@ -63,6 +69,7 @@ export default {
           composite: "add",
         }
       );
+      this.timer("flex-end");
     },
     moveLeft() {
       this.drone.animate(
@@ -74,6 +81,7 @@ export default {
           composite: "add",
         }
       );
+      this.timer("flex-start");
     },
     moveDown() {
       if (this.direction !== "") {
@@ -91,7 +99,6 @@ export default {
 @import "@/assets/styles/keyframes.scss";
 .home {
   display: flex;
-  justify-content: center;
 }
 .drone {
   width: 30vmin;
