@@ -1,8 +1,7 @@
 <template>
   <div class="home">
-    <div :class="`ingenuity ${direction}`">
+    <div :class="['drone', direction]" id="drone">
       <div class="rotor-shaft">
-        <span></span>
         <span></span>
       </div>
       <div class="helix-top"></div>
@@ -25,7 +24,65 @@ export default {
   data: () => {
     return {
       direction: "",
+      drone: null,
     };
+  },
+  mounted() {
+    window.addEventListener("keydown", (e) => {
+      switch (e.code) {
+        case "ArrowUp":
+          this.moveUp();
+          break;
+        case "ArrowDown":
+          this.moveDown();
+          break;
+        case "ArrowRight":
+          this.moveRight();
+          break;
+        case "ArrowLeft":
+          this.moveLeft();
+          break;
+
+        default:
+          break;
+      }
+    });
+    this.drone = document.getElementById("drone");
+  },
+  methods: {
+    moveUp() {
+      this.direction = "up move";
+    },
+    moveRight() {
+      this.drone.animate(
+        {
+          transform: ["translateX(0vmin)", "translateX(50vmin)"],
+        },
+        {
+          duration: 1000,
+          composite: "add",
+        }
+      );
+    },
+    moveLeft() {
+      this.drone.animate(
+        {
+          transform: ["translateX(0vmin)", "translateX(-50vmin)"],
+        },
+        {
+          duration: 1000,
+          composite: "add",
+        }
+      );
+    },
+    moveDown() {
+      if (this.direction !== "") {
+        this.direction = "down move";
+        setTimeout(() => {
+          this.direction = "";
+        }, 1000);
+      }
+    },
   },
 };
 </script>
@@ -36,7 +93,7 @@ export default {
   display: flex;
   justify-content: center;
 }
-.ingenuity {
+.drone {
   width: 30vmin;
   height: 30vmin;
   position: absolute;
@@ -45,13 +102,12 @@ export default {
   transform-style: preserve-3d;
   bottom: 15vmin;
   perspective-origin: top;
-  animation: takeoff 2s ease 0s 1, flight 1s ease 1s infinite alternate;
   perspective-origin: bottom;
 }
 
 .rotor-shaft {
   width: 1vmin;
-  height: 7vmin;
+  height: 10vmin;
   background: linear-gradient(90deg, #212121, #555);
   position: absolute;
   left: calc(50% - 0.5vmin);
@@ -124,18 +180,34 @@ export default {
   transform: rotateX(-110deg) rotateZ(-10deg);
 }
 
-.ingenuity .helix-top {
-  transform: none;
+.drone .helix-top {
+  // transform: none;
   box-shadow: 0 0 5px 0px #000;
-  animation: helix-top-spin 0.085s 0s infinite;
 }
 
-.ingenuity .helix-bot {
-  transform: none;
-  box-shadow: 0 0 5px 0px #000;
+.drone.move .helix-bot {
   animation: helix-bot-spin 0.075s 0s infinite;
 }
-
+.drone.move .helix-top {
+  animation: helix-top-spin 0.085s 0s infinite;
+}
+.drone .helix-bot {
+  // transform: none;
+  box-shadow: 0 0 5px 0px #000;
+}
+.drone.up {
+  animation: takeoff 2s ease 0s 1, flight 1s ease 1s infinite alternate;
+}
+.drone.down {
+  animation: landing 1s ease-in 0s 1;
+}
+.drone.right {
+  animation: moveRight 1s ease-in 0s 1;
+}
+.drone.right.up {
+  animation: takeoff 2s ease 0s 1, flight 1s ease 1s infinite alternate,
+    moveRight 1s ease-in 0s 1;
+}
 .body-box {
   position: absolute;
   width: 6vmin;
@@ -208,7 +280,5 @@ export default {
 
 .body-box span:nth-child(1) {
   border: 0;
-}
-.left {
 }
 </style>

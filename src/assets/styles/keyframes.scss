@@ -76,6 +76,49 @@
 		transform: rotateX(0deg) rotateY(2deg) translateY(-50vmin) translateX(0.1vmin);
 	}
 }
+@keyframes moveRight {
+    0% {
+        transform: translateX(0vmin);
+    }
+    100% {
+        transform: translateX(50vmin);
+    }
+}
+
+@keyframes landing {
+	0% {
+		transform: rotateX(0deg) rotateY(-5deg) translateY(-50vmin);
+	}
+	70% {
+		transform: rotateX(0deg) rotateY(-4deg) translateY(0vmin);
+	}
+	75% {
+		transform: rotateX(0deg) rotateY(-3deg) translateY(1.5vmin);
+	}
+	80% {
+		transform: rotateX(0deg) rotateY(-2deg) translateY(0vmin);
+	}
+	85% {
+		transform: rotateX(0deg) rotateY(-2deg) translateY(1vmin);
+	}
+	90% {
+		transform: rotateX(0deg) rotateY(-3deg) translateY(0vmin);
+	}
+	95% {
+		transform: rotateX(0deg) rotateY(-4deg) translateY(0.5vmin);
+	}
+	100% {
+		transform: rotateX(0deg) rotateY(-5deg) translateY(0vmin);
+	}
+}
+@keyframes left {
+    0% {
+
+    }
+}
+@keyframes right {
+    
+}
 @keyframes helix-top-spin {
 	0% {
 		transform: rotateX(70deg) rotateZ(0deg);
