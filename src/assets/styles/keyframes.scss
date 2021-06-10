@@ -1,0 +1,94 @@
+@keyframes takeoff {
+	0% {
+		transform: rotateX(0deg) rotateY(-5deg) translateY(0);
+        opacity: 0.4;
+	}
+	100% {
+		transform: rotateX(0deg) rotateY(-5deg) translateY(-50vmin);
+        opacity: 1;
+	}
+}
+@keyframes flight {
+	0% {
+		transform: rotateX(0deg) rotateY(-5deg) translateY(-50vmin) translateX(0vmin);
+	}
+	5% {
+		transform: rotateX(0deg) rotateY(-4.5deg) translateY(-49.9vmin)
+			translateX(-0.05vmin);
+	}
+	10% {
+		transform: rotateX(0deg) rotateY(-4deg) translateY(-49.8vmin)
+			translateX(0.1vmin);
+	}
+	15% {
+		transform: rotateX(0deg) rotateY(-3.5deg) translateY(-49.7vmin)
+			translateX(-0.1vmin);
+	}
+	20% {
+		transform: rotateX(0deg) rotateY(-3deg) translateY(-49.6vmin)
+			translateX(0.05vmin);
+	}
+	25% {
+		transform: rotateX(0deg) rotateY(-2.5deg) translateY(-49.5vmin)
+			translateX(-0.1vmin);
+	}
+	30% {
+		transform: rotateX(0deg) rotateY(-1deg) translateY(-49.4vmin)
+			translateX(0.1vmin);
+	}
+	35% {
+		transform: rotateX(0deg) rotateY(0deg) translateY(-49.3vmin)
+			translateX(-0.05vmin);
+	}
+	40% {
+		transform: rotateX(0deg) rotateY(1deg) translateY(-49.2vmin)
+			translateX(0.1vmin);
+	}
+	45% {
+		transform: rotateX(0deg) rotateY(1.5deg) translateY(-49.1vmin)
+			translateX(-0.1vmin);
+	}
+	50% {
+		transform: rotateX(0deg) rotateY(2deg) translateY(-49vmin)
+			translateX(0.05vmin);
+	}
+	55% {
+		transform: rotateX(0deg) rotateY(2.5deg) translateY(-49.1vmin)
+			translateX(-0.1vmin);
+	}
+	60% {
+		transform: rotateX(0deg) rotateY(3deg) translateY(-49.2vmin)
+			translateX(0.1vmin);
+	}
+	65% {
+		transform: rotateX(0deg) rotateY(3.5deg) translateY(-49.3vmin)
+			translateX(-0.05vmin);
+	}
+	70% {
+		transform: rotateX(0deg) rotateY(4deg) translateY(-49.4vmin)
+			translateX(0.1vmin);
+	}
+	75% {
+		transform: rotateX(0deg) rotateY(4.5deg) translateY(-49.5vmin)
+			translateX(-0.1vmin);
+	}
+	100% {
+		transform: rotateX(0deg) rotateY(2deg) translateY(-50vmin) translateX(0.1vmin);
+	}
+}
+@keyframes helix-top-spin {
+	0% {
+		transform: rotateX(70deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(70deg) rotateZ(359deg);
+	}
+}
+@keyframes helix-bot-spin {
+	0% {
+		transform: rotateX(-110deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(-110deg) rotateZ(359deg);
+	}
+}
